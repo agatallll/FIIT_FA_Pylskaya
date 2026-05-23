@@ -1,22 +1,12 @@
-﻿using TreeDataStructures.Core;
+using TreeDataStructures.Core;
 
 namespace TreeDataStructures.Implementations.BST;
 
 public class BinarySearchTree<TKey, TValue> : BinarySearchTreeBase<TKey, TValue, BstNode<TKey, TValue>>
 {
+    public BinarySearchTree() : this(null) { } // конструктор без параметров для generic создания
+    public BinarySearchTree(IComparer<TKey>? comparer) : base(comparer) { } // конструктор с компаратором
+    
     protected override BstNode<TKey, TValue> CreateNode(TKey key, TValue value)
-    {
-        throw new NotImplementedException();
-    }
-    
-    protected override void OnNodeAdded(BstNode<TKey, TValue> newNode)
-    {
-        throw new NotImplementedException();
-    }
-    
-    protected override void OnNodeRemoved(BstNode<TKey, TValue>? parent, BstNode<TKey, TValue>? child)
-    {
-        throw new NotImplementedException();
-    }
-    
+        => new(key, value); // фабрика узлов
 }
